@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "The logistic regression mainly focuses on",
+      "answers": {
+        "a": "Dimension reduction",
+        "b": "Binary Classification",
+        "c": "Clustering",
+        "d": "Regression"
+      },
+      "explanations": {
+        "a": "Logistic regression does not reduce features; it predicts class probabilities.",
+        "b": "Logistic regression is mainly used to classify data into two classes (0 or 1).",
+        "c": "Clustering is an unsupervised task, while logistic regression is supervised.",
+        "d": "Despite the name, logistic regression performs classification, not continuous regression."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Logistic regression falls under which type",
+      "answers": {
+        "a": "Supervised Learning",
+        "b": "Unsupervised Learning",
+        "c": "Reinforcement Learning",
+        "d": "None of above"
+      },
+      "explanations": {
+        "a": "It learns from labeled data where the output class is known.",
+        "b": "Unsupervised learning does not use labeled outputs.",
+        "c": "Reinforcement learning learns via rewards, not labeled datasets.",
+        "d": "Logistic regression clearly belongs to supervised learning."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In which function z goes into",
+      "answers": {
+        "a": "Tanh",
+        "b": "ReLU",
+        "c": "Sigmoid",
+        "d": "Leaky ReLU"
+      },
+      "explanations": {
+        "a": "Tanh is used in neural networks but not standard logistic regression.",
+        "b": "ReLU is mainly used in deep learning, not logistic regression.",
+        "c": "Logistic regression applies the sigmoid function to z.",
+        "d": "Leaky ReLU is unrelated to logistic regression."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The value of Sigmoid function always lies between",
+      "answers": {
+        "a": "-1 and +1",
+        "b": "-1 and ∞",
+        "c": "1 and ∞",
+        "d": "0 and 1"
+      },
+      "explanations": {
+        "a": "-1 and +1 is the range of tanh, not sigmoid.",
+        "b": "Sigmoid never produces negative values or infinity.",
+        "c": "Sigmoid output is always less than 1.",
+        "d": "Sigmoid maps real values into probability range."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In the equation z = w·x + b, b represents",
+      "answers": {
+        "a": "Loss value",
+        "b": "Gain value",
+        "c": "Bias",
+        "d": "Scaled value"
+      },
+      "explanations": {
+        "a": "Loss is calculated after prediction.",
+        "b": "Gain is not part of logistic regression.",
+        "c": "Bias shifts the decision boundary.",
+        "d": "Scaling is a preprocessing step."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "The logistic regression was first proposed by",
+      "answers": {
+        "a": "Chervonenkis",
+        "b": "Pierre François Verhulst",
+        "c": "Vapnik",
+        "d": "Ross Quinlan"
+      },
+      "explanations": {
+        "a": "Known for VC theory, not logistic regression.",
+        "b": "He introduced the logistic function.",
+        "c": "Vapnik is associated with SVMs.",
+        "d": "Ross Quinlan is known for decision trees."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "We set the threshold 0.5 because",
+      "answers": {
+        "a": "Accuracy",
+        "b": "Sigmoid mid-point",
+        "c": "Random choose",
+        "d": "Can choose 0 or 1"
+      },
+      "explanations": {
+        "a": "0.5 does not always give best accuracy.",
+        "b": "0.5 corresponds to z = 0.",
+        "c": "Threshold is not random.",
+        "d": "Threshold separates probabilities."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "We used sigmoid function because it is",
+      "answers": {
+        "a": "Easy",
+        "b": "Differentiable",
+        "c": "Periodic",
+        "d": "Continous"
+      },
+      "explanations": {
+        "a": "Ease is not the main reason.",
+        "b": "Differentiability enables gradient descent.",
+        "c": "Sigmoid is not periodic.",
+        "d": "Continuity alone is insufficient."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "The role of Bias is to",
+      "answers": {
+        "a": "Shifts the decision boundary",
+        "b": "Reduces overfitting",
+        "c": "Increases underfitting",
+        "d": "Normalizes data"
+      },
+      "explanations": {
+        "a": "Bias allows flexibility in model fitting.",
+        "b": "Overfitting is handled by regularization.",
+        "c": "Bias does not cause underfitting.",
+        "d": "Normalization is preprocessing."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "When was logistic regression invented",
+      "answers": {
+        "a": "1968",
+        "b": "1958",
+        "c": "1948",
+        "d": "1988"
+      },
+      "explanations": {
+        "a": "Logistic regression existed before this year.",
+        "b": "Logistic regression was formally introduced around this time.",
+        "c": "Too early for formal logistic regression.",
+        "d": "Logistic regression was already established."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+}

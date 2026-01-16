@@ -1,0 +1,12 @@
+
+/home/runner/work/exp-logistic-regression-dei/exp-logistic-regression-dei/experiment/simulation/js/main.js
+  1294:10  error  Parsing error: Identifier 'init' has already been declared
+
+/home/runner/work/exp-logistic-regression-dei/exp-logistic-regression-dei/experiment/simulation/js/temp_tail.js
+   22:37  warning  'stepsData' is not defined          no-undef
+  158:57  warning  'reject' is defined but never used  no-unused-vars
+  226:5   warning  'renderSidebar' is not defined      no-undef
+  227:5   warning  'loadStep' is not defined           no-undef
+
+✖ 5 problems (1 error, 4 warnings)
+

@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Recall is also called",
+      "answers": {
+        "a": "Accuracy",
+        "b": "Specificity",
+        "c": "Sensitivity",
+        "d": "Positivity"
+      },
+      "explanations": {
+        "a": "Accuracy measures overall correctness, not recall.",
+        "b": "Specificity measures true negative rate.",
+        "c": "Recall is also known as sensitivity or true positive rate.",
+        "d": "Positivity is not a standard performance metric."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "F1 in terms of TP, FP, FN is represented as",
+      "answers": {
+        "a": "2FN/(2TP+FP+FN)",
+        "b": "2TP/(3TP+FN)",
+        "c": "TP/(2TP+FP+FN)",
+        "d": "2TP/(2TP+FP+FN)"
+      },
+      "explanations": {
+        "a": "FN should not be in numerator for F1 score.",
+        "b": "This formula does not include FP correctly.",
+        "c": "Missing factor of 2 in numerator.",
+        "d": "This is the correct mathematical expression of F1 score."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Balanced dataset improves",
+      "answers": {
+        "a": "Plotting",
+        "b": "Accuracy",
+        "c": "Visuals",
+        "d": "Scaling"
+      },
+      "explanations": {
+        "a": "Plotting is not affected by class balance.",
+        "b": "Balanced data prevents biased accuracy toward majority class.",
+        "c": "Visual appearance is not a performance metric.",
+        "d": "Scaling is independent of data balance."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "F1 depends on",
+      "answers": {
+        "a": "TP, FP, FN",
+        "b": "TP, TN, FP",
+        "c": "TP, TN, FN",
+        "d": "TP, FN"
+      },
+      "explanations": {
+        "a": "F1 score combines precision and recall, which use TP, FP, FN.",
+        "b": "TN is not used in F1 calculation.",
+        "c": "TN is not part of recall or precision.",
+        "d": "FP is also required to compute F1."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "When Precision is high, FP is",
+      "answers": {
+        "a": "High",
+        "b": "Low",
+        "c": "0",
+        "d": "∞"
+      },
+      "explanations": {
+        "a": "High FP lowers precision.",
+        "b": "Precision increases when false positives are low.",
+        "c": "FP can be low but not necessarily zero.",
+        "d": "Infinite FP is not meaningful."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "When Recall is high, FN is",
+      "answers": {
+        "a": "High",
+        "b": "Low",
+        "c": "0",
+        "d": "∞"
+      },
+      "explanations": {
+        "a": "High FN reduces recall.",
+        "b": "Recall increases when false negatives are low.",
+        "c": "FN can be small but not always zero.",
+        "d": "Infinite FN means zero recall."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Specificity doesn’t include",
+      "answers": {
+        "a": "TN",
+        "b": "FN",
+        "c": "TP",
+        "d": "TP and FN"
+      },
+      "explanations": {
+        "a": "TN is required for specificity.",
+        "b": "FN is not used in specificity calculation.",
+        "c": "TP is also not used in specificity.",
+        "d": "Specificity depends only on TN and FP."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of them doesn’t depend on TN",
+      "answers": {
+        "a": "Accuracy",
+        "b": "Precision",
+        "c": "Recall",
+        "d": "F1 score"
+      },
+      "explanations": {
+        "a": "Accuracy uses TN in its formula.",
+        "b": "Precision depends only on TP and FP.",
+        "c": "Recall uses TP and FN.",
+        "d": "F1 score depends on TP, FP, FN only."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In Medical diagnosis, which of them are most dangerous",
+      "answers": {
+        "a": "FP",
+        "b": "TN",
+        "c": "FN",
+        "d": "TP"
+      },
+      "explanations": {
+        "a": "FP may cause unnecessary treatment but is less dangerous.",
+        "b": "TN indicates correct healthy diagnosis.",
+        "c": "FN misses a disease, which can be life-threatening.",
+        "d": "TP correctly detects disease."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "We apply threshold only on time of",
+      "answers": {
+        "a": "Training",
+        "b": "Prediction",
+        "c": "Testing",
+        "d": "Visualization"
+      },
+      "explanations": {
+        "a": "Training updates model parameters, not thresholds.",
+        "b": "Threshold is applied to predicted probabilities.",
+        "c": "Testing evaluates results after prediction.",
+        "d": "Visualization does not affect classification."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    }
+  ]
+}
