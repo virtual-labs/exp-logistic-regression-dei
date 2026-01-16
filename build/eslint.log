@@ -1,6 +1,6 @@
 
 C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\main.js
-  1271:10  error  Parsing error: Identifier 'init' has already been declared
+  1294:10  error  Parsing error: Identifier 'init' has already been declared
 
 C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\temp_tail.js
    22:37  warning  'stepsData' is not defined          no-undef

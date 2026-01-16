@@ -355,21 +355,19 @@
           
               </div>
               <p>The objective of this experiment is to classify patients into two categories—dengue positive and dengue negative, based on a set of clinical features. The input to the model consists of multiple independent variables representing clinical attributes, while the output is a binary dependent variable indicating the presence or absence of the disease.</p>
-          <p>The dataset has 5000 rows and 17 columns out of which 16 columns (features) are Independent variables or Input features (X) and the last column i.e. dengue is dependent variable or output (Y). In which, each row represent samples of one patient.</p>
-          <ol>
-          <li> <strong>Import Libraries</strong>: Initialize the environment by importing the required libraries: <code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</li>
-          <li> <strong>Load Dataset</strong>: Load the <code>Dengue_dataset.csv</code> file into a DataFrame for processing.</li>
-          <li> <strong>Data Analysis</strong>: Conduct initial data exploration using <code>head()</code>, <code>tail()</code>, <code>info()</code>, <code>describe()</code>, and <code>isnull().sum()</code> to understand the dataset structure and quality.</li>
-          <li> <strong>Define Target and Features</strong>: Identify the target variable <code>Dengue</code> and define the feature set by excluding the target column from the dataset.</li>
-          <li> <strong>Split Dataset</strong>: Partition the dataset into training (80%) and testing (20%) sets to facilitate model validation.</li>
-          <li> <strong>Feature Selection</strong>: Select the appropriate numerical features required for the model training process.</li>
-          <li> <strong>Model Training</strong>: Train the Logistic Regression classifier using the training dataset.</li>
-          <li> <strong>Predict Outputs</strong>: Use the trained model to generate predictions for the test data.</li>
-          <li> <strong>Model Evaluation</strong>: Assess performance using key metrics such as Accuracy, Precision, Recall, and F1-Score.</li>
-          <li><strong>Confusion Matrix</strong>: Plot the confusion matrix for both training and testing datasets to visualize prediction accuracy.</li>
-          <li><strong>ROC Curve</strong>: Plot the Receiver Operating Characteristic (ROC) curve and calculate the Area Under the Curve (AUC) value.</li>
-          <li><strong>Sigmoid Visualization</strong>: Visualize the sigmoid curve for individual features to observe the probabilistic relationship with the target variable.</li>
-          </ol>
+          <p><strong>Step 1</strong>: <strong>Import Libraries</strong>: Initialize the environment by importing the required libraries: <code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, and <code>scikit-learn</code>.</p>
+          <p><strong>Step 2</strong>: <strong>Load Dataset</strong>: Load the <code>Dengue_dataset.csv</code>.
+          The dataset has 5000 rows and 17 columns out of which 16 columns (features) are Independent variables or Input features (X) and the last column i.e. dengue is dependent variable or output (Y). In which, each row represent samples of one patient.</p>
+          <p><strong>Step 3</strong>: <strong>Data Analysis</strong>: Conduct initial data exploration using <code>head()</code>, <code>tail()</code>, <code>info()</code>, <code>describe()</code>, and <code>isnull().sum()</code> to understand the dataset structure and quality.</p>
+          <p><strong>Step 4</strong>: <strong>Define Target and Features</strong>: Identify the target variable <code>Dengue</code> and define the feature set by excluding the target column from the dataset.</p>
+          <p><strong>Step 5</strong>: <strong>Split Dataset</strong>: Partition the dataset into training (80%) and testing (20%) sets to facilitate model validation.</p>
+          <p><strong>Step 6</strong>: <strong>Feature Selection</strong>: Select the appropriate numerical features required for the model training process.</p>
+          <p><strong>Step 7</strong>: <strong>Model Training</strong>: Train the Logistic Regression classifier using the training dataset.</p>
+          <p><strong>Step 8</strong>: <strong>Predict Outputs</strong>: Use the trained model to generate predictions for the test data.</p>
+          <p><strong>Step 9</strong>: <strong>Model Evaluation</strong>: Assess performance using key metrics such as Accuracy, Precision, Recall, and F1-Score.</p>
+          <p><strong>Step 10</strong>: <strong>Confusion Matrix</strong>: Plot the confusion matrix for both training and testing datasets to visualize prediction accuracy.</p>
+          <p><strong>Step 11</strong>: <strong>ROC Curve</strong>: Plot the Receiver Operating Characteristic (ROC) curve and calculate the Area Under the Curve (AUC) value.</p>
+          <p><strong>Step 12</strong>: <strong>Sigmoid Visualization</strong>: Visualize the sigmoid curve for individual features to observe the probabilistic relationship with the target variable.</p>
           
             </div>
           <div class="bug-report-mobile">

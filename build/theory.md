@@ -42,16 +42,16 @@ Based on this thresholding process, the model assigns a class label to each inpu
 
 ### 4. Merits of Logistic regression:
 
-•	Logistic regression provides easily interpretable model coefficients, helping to understand the relationship between input features and the predicted outcome.
+- Logistic regression provides easily interpretable model coefficients, helping to understand the relationship between input features and the predicted outcome.
 
-•	It is computationally efficient, easy to implement, and performs well on large datasets with relatively low computational cost.
+- It is computationally efficient, easy to implement, and performs well on large datasets with relatively low computational cost.
 
-•	The model produces probability estimates between 0 and 1, allowing flexible decision-making through threshold adjustment.
+- The model produces probability estimates between 0 and 1, allowing flexible decision-making through threshold adjustment.
 
 ### 5. Demerits of Logistic regression:
 
-• Logistic regression assumes a linear relationship between the independent variables and the log-odds of the dependent variable, which may not hold for complex real-world data.
+- Logistic regression assumes a linear relationship between the independent variables and the log-odds of the dependent variable, which may not hold for complex real-world data.
 
-• It is sensitive to outliers and irrelevant features, which can negatively affect model performance.
+- It is sensitive to outliers and irrelevant features, which can negatively affect model performance.
 
-• Logistic regression may underperform when the classes are not linearly separable or when the dataset has complex nonlinear patterns.
+- Logistic regression may underperform when the classes are not linearly separable or when the dataset has complex nonlinear patterns.

@@ -20,8 +20,6 @@ from sklearn.metrics import (
     roc_auc_score, roc_curve, confusion_matrix, classification_report
 )
 from ipywidgets import interact, Dropdown
-import time
-from IPython.display import clear_output
 print("Libraries Imported");`,
         output: `<div class="output-success">Libraries Imported</div>`
       }
@@ -273,7 +271,7 @@ data.info()`,
   </tbody>
 </table>
 <div class="output-text" style="margin-top:5px;">dtypes: float64(1), int64(15)</div>
-<div class="output-text">memory usage: 664.2 KB</div>`
+<div class="output-text">memory usage: 625.1 KB</div>`
       },
       {
         code: `<div class="output-success"># Check the number of missing values in each column</div>
@@ -571,27 +569,46 @@ X`,
 <table class="data-table">
   <thead>
     <tr>
-      <th>index</th><th>Age</th><th>FeverDays</th><th>Hematocrit</th><th>WBC</th><th>Headache</th><th>EyePain</th><th>MusclePain</th><th>JointPain</th><th>Rash</th><th>Nausea</th><th>Vomiting</th><th>AbdominalPain</th><th>Bleeding</th><th>Lethargy</th>
+      <th></th><th>Age</th><th>FeverDays</th><th>Platelets</th><th>Hematocrit</th><th>WBC</th><th>Headache</th><th>EyePain</th><th>MusclePain</th><th>JointPain</th><th>Rash</th><th>Nausea</th><th>Vomiting</th><th>AbdominalPain</th><th>Bleeding</th><th>Lethargy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>0</td><td>61</td><td>6</td><td>49.4957</td><td>3205</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td>
+      <td>0</td><td>61</td><td>6</td><td>56777</td><td>49.495729</td><td>3205</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td>
     </tr>
     <tr>
-      <td>1</td><td>24</td><td>7</td><td>42.4109</td><td>3738</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td>
+      <td>1</td><td>24</td><td>7</td><td>61250</td><td>42.410936</td><td>3738</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td>
     </tr>
     <tr>
-      <td>2</td><td>70</td><td>7</td><td>49.6614</td><td>3052</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td>
+      <td>2</td><td>70</td><td>7</td><td>88034</td><td>49.661431</td><td>3052</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td>
     </tr>
     <tr>
-      <td>3</td><td>30</td><td>6</td><td>50.2016</td><td>2713</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td>
+      <td>3</td><td>30</td><td>6</td><td>55130</td><td>50.201593</td><td>2713</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td>
     </tr>
     <tr>
-      <td>4</td><td>33</td><td>3</td><td>43.4698</td><td>4888</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td>
+      <td>4</td><td>33</td><td>3</td><td>64346</td><td>43.469804</td><td>4888</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td>
+    </tr>
+    <tr>
+      <td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td>
+    </tr>
+    <tr>
+      <td>4995</td><td>59</td><td>2</td><td>123791</td><td>47.188610</td><td>4239</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+    </tr>
+    <tr>
+      <td>4996</td><td>11</td><td>4</td><td>111575</td><td>41.845604</td><td>5989</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td>
+    </tr>
+    <tr>
+      <td>4997</td><td>19</td><td>2</td><td>128198</td><td>40.284278</td><td>4775</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+    </tr>
+    <tr>
+      <td>4998</td><td>11</td><td>0</td><td>141619</td><td>47.393916</td><td>4625</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td>
+    </tr>
+    <tr>
+      <td>4999</td><td>69</td><td>2</td><td>90619</td><td>46.471485</td><td>5982</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td>
     </tr>
   </tbody>
-</table>`
+</table>
+<div class="output-text" style="font-size:0.8rem; margin-top:5px;">5000 rows × 15 columns</div>`
       },
       {
         code: `<div class="output-success"># Display the first few values of the target variable</div>
@@ -614,11 +631,12 @@ y.head()`,
       {
         code: `<div class="output-success"># Initialize and train a Logistic Regression model with L2 regularization on the training data</div>
 model = LogisticRegression(C=1.0, penalty='l2', solver='liblinear')
-model.fit(X_train, Y_train)`,
-        output: `<div class="output-success">Model trained successfully</div>
-<div style="margin-top: 10px;">
-    <img src="./images/model_output.png" alt="Sklearn Output" style="max-width: 30%; border: 1px solid #ddd; border-radius: 4px;">
-</div>`
+model.fit(X_train, Y_train)
+print("Model trained successfully")`,
+        output: `<img src="./images/model_output.png" alt="Sklearn Output" style="max-width: 30%; border: 1px solid #ddd; border-radius: 4px;">
+</div>
+<div class="output-success">Model trained successfully</div>
+<div style="margin-top: 10px;">`
       }
     ]
   },
@@ -644,7 +662,9 @@ def show_1d_sigmoid(f):
     plt.scatter(X[y==0],y[y==0]); plt.scatter(X[y==1],y[y==1]); plt.plot(g,p); plt.xlabel(f); 
     plt.ylabel("Probability of Dengue");
     plt.ylim(-.1,1.1); plt.grid(1); plt.title(f"Sigmoid using {f}");
-    plt.show()`,
+    plt.show()
+
+print("Function defined: show_1d_sigmoid")`,
         output: `<div class="output-success">Function defined: show_1d_sigmoid</div>`
       },
       {
@@ -746,7 +766,8 @@ plt.show()`,
         code: `<div class="output-success"># Calculates predicted probabilities to compute ROC curve metrics and the AUC score.</div>
 Y_proba = model.predict_proba(X_test)[:,1]
 fpr, tpr, th = roc_curve(Y_test, Y_proba)
-roc_auc = auc(fpr, tpr)`,
+roc_auc = auc(fpr, tpr)
+print(f"ROC metrics calculated. AUC = {roc_auc:.3f}")`,
         output: `<div class="output-success">ROC metrics calculated. AUC = 0.998</div>`
       },
       {
@@ -768,6 +789,8 @@ plt.show()`,
       },
       {
         code: `<div class="output-success"># Random Test Prediction</div>
+test_samples=data.sample(5)
+display(test_samples)
 sample = X_test.sample(1)
 actual = Y_test.loc[sample.index].values[0]
 pred = model.predict(sample)[0]
