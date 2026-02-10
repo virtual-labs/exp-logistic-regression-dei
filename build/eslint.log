@@ -1,12 +1,11 @@
 
 C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\main.js
-  1294:10  error  Parsing error: Identifier 'init' has already been declared
+  1318:10  error  Parsing error: Identifier 'init' has already been declared
 
-C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\temp_tail.js
-   22:37  warning  'stepsData' is not defined          no-undef
-  158:57  warning  'reject' is defined but never used  no-unused-vars
-  226:5   warning  'renderSidebar' is not defined      no-undef
-  227:5   warning  'loadStep' is not defined           no-undef
+C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\pdf-generator.js
+    6:16  warning  'downloadPDF' is defined but never used  no-unused-vars
+  170:31  warning  'stepsData' is not defined               no-undef
+  171:22  warning  'stepsData' is not defined               no-undef
 
-✖ 5 problems (1 error, 4 warnings)
+✖ 4 problems (1 error, 3 warnings)
 
