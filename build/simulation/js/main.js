@@ -923,6 +923,7 @@ function renderSidebar() {
   // Add Download Button below Restart
   const downloadBtn = document.createElement('button');
   downloadBtn.classList.add('step-btn');
+  downloadBtn.id = 'downloadExperimentBtn';
   downloadBtn.innerHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align: middle;">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -931,11 +932,35 @@ function renderSidebar() {
     </svg>
     Download Experiment
   `;
-  downloadBtn.style.backgroundColor = "#F57C2A"; // Orange (#F57C2A)
   downloadBtn.style.textAlign = 'center';
   downloadBtn.style.marginTop = "10px";
-  downloadBtn.style.color = "white";
-  downloadBtn.onclick = downloadPDF;
+
+  // Check if all steps are completed
+  const allCompleted = checkAllStepsCompleted();
+
+  if (allCompleted) {
+    downloadBtn.style.backgroundColor = "#F57C2A"; // Orange when enabled
+    downloadBtn.style.opacity = "1";
+    downloadBtn.style.cursor = "pointer";
+    downloadBtn.disabled = false;
+    downloadBtn.onclick = function() {
+      // Download the static PDF file instead of generating one
+      const link = document.createElement('a');
+      link.href = './Exp-Logistic_Regression.pdf';
+      link.download = 'Exp-Logistic_Regression.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  } else {
+    downloadBtn.style.backgroundColor = "#ccc"; // Grey when disabled
+    downloadBtn.style.opacity = "0.7";
+    downloadBtn.style.cursor = "not-allowed";
+    downloadBtn.disabled = true;
+    downloadBtn.title = "Complete all steps to download the report";
+    downloadBtn.onclick = null;
+  }
+
   stepsContainer.appendChild(downloadBtn);
 }
 
@@ -1279,27 +1304,20 @@ function showCompletionMessage() {
   runBtn.style.display = 'none';
 }
 
-// PDF Download Logic
-function downloadPDF() {
-  const link = document.createElement('a');
-  link.href = './Exp-Logistic_Regression.pdf';
-  link.download = 'Exp-Logistic_Regression.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+// PDF Download Logic - Dynamic Notebook-Style PDF
+function checkAllStepsCompleted() {
+  return STATE.stepsStatus.every(status => status.completed);
 }
+
+// PDF generation logic moved to js/pdf-generator.js
+
+
 
 
 // Init
 function init() {
   renderSidebar();
   loadStep(0);
-
-  // Attach Download Listener
-  const downloadBtn = document.querySelector('.download-btn');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', downloadPDF);
-  }
 }
 
 init();

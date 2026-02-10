@@ -287,6 +287,14 @@ body {
     color: #fff;
 }
 
+/* Disabled Download Button State */
+.step-btn.download-disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
 /* Content Area Styles */
 .content-area {
     flex-grow: 1;
