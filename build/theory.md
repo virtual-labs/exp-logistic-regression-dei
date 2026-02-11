@@ -55,3 +55,26 @@ Based on this thresholding process, the model assigns a class label to each inpu
 - It is sensitive to outliers and irrelevant features, which can negatively affect model performance.
 
 - Logistic regression may underperform when the classes are not linearly separable or when the dataset has complex nonlinear patterns.
+
+### 6. Algorithm
+
+1. **Step 1:** Compute weighted sum of inputs:
+    - `z = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ`
+2. **Step 2:** Pass z through the Sigmoid function to get probability:
+    - `P(y=1|x) = 1 / (1 + e⁻ᶻ)`
+    - Result is always between 0 and 1
+3. **Step 3:** Define the likelihood function:
+    - For each training example, probability of correct label:
+        - If actual label = 1: probability = P
+        - If actual label = 0: probability = 1 - P
+4. **Step 4:** Calculate Log-Likelihood (to maximize):
+    - `L = Σ[yᵢ × log(Pᵢ) + (1-yᵢ) × log(1-Pᵢ)]`
+5. **Step 5:** Find optimal weights using Gradient Ascent:
+    - Repeat until convergence:
+        - Calculate gradient: `∂L/∂βⱼ = Σ(yᵢ - Pᵢ) × xᵢⱼ`
+        - Update weights: `βⱼ = βⱼ + α × (∂L/∂βⱼ)`
+        - α is the learning rate
+6. **Step 6:** For prediction:
+    - Calculate P using learned weights
+    - If P ≥ 0.5, predict class 1
+    - If P < 0.5, predict class 0

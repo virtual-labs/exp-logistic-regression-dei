@@ -349,11 +349,11 @@
                         </div>
                     </div>
                 </div>
-          </div>            <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
-              <div class="text-center fix-spacing">
-                <h2 id="logistic-regression">Logistic Regression</h2>
+          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+            <div class="text-center fix-spacing">
+              <h2 id="logistic-regression">Logistic Regression</h2>
           
-              </div>
+            </div>
               <p>Logistic regression is a supervised machine learning algorithm used for binary classification problems, where the dependent variable has two possible outcomes. It models the relationship between one or more independent variables and a dichotomous dependent variable by estimating the probability that a given input belongs to a particular class.</p>
           <h3 id="1-linear-combination">1. Linear Combination</h3>
           <p>In logistic regression, the input features are combined linearly using weights and a bias term. This linear combination is expressed as:</p>
@@ -410,8 +410,47 @@
           <li><p>Logistic regression may underperform when the classes are not linearly separable or when the dataset has complex nonlinear patterns.</p>
           </li>
           </ul>
+          <h3 id="6-algorithm">6. Algorithm</h3>
+          <ol>
+          <li><strong>Step 1:</strong> Compute weighted sum of inputs:<ul>
+          <li><code>z = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ</code></li>
+          </ul>
+          </li>
+          <li><strong>Step 2:</strong> Pass z through the Sigmoid function to get probability:<ul>
+          <li><code>P(y=1|x) = 1 / (1 + e⁻ᶻ)</code></li>
+          <li>Result is always between 0 and 1</li>
+          </ul>
+          </li>
+          <li><strong>Step 3:</strong> Define the likelihood function:<ul>
+          <li>For each training example, probability of correct label:<ul>
+          <li>If actual label = 1: probability = P</li>
+          <li>If actual label = 0: probability = 1 - P</li>
+          </ul>
+          </li>
+          </ul>
+          </li>
+          <li><strong>Step 4:</strong> Calculate Log-Likelihood (to maximize):<ul>
+          <li><code>L = Σ[yᵢ × log(Pᵢ) + (1-yᵢ) × log(1-Pᵢ)]</code></li>
+          </ul>
+          </li>
+          <li><strong>Step 5:</strong> Find optimal weights using Gradient Ascent:<ul>
+          <li>Repeat until convergence:<ul>
+          <li>Calculate gradient: <code>∂L/∂βⱼ = Σ(yᵢ - Pᵢ) × xᵢⱼ</code></li>
+          <li>Update weights: <code>βⱼ = βⱼ + α × (∂L/∂βⱼ)</code></li>
+          <li>α is the learning rate</li>
+          </ul>
+          </li>
+          </ul>
+          </li>
+          <li><strong>Step 6:</strong> For prediction:<ul>
+          <li>Calculate P using learned weights</li>
+          <li>If P ≥ 0.5, predict class 1</li>
+          <li>If P &lt; 0.5, predict class 0</li>
+          </ul>
+          </li>
+          </ol>
           
-            </div>
+          </div>
           <div class="bug-report-mobile">
               <bug-report id="bug-report" title="[BUG REPORT] LOGISTIC REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;LOGISTIC REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
                           position: fixed; 
