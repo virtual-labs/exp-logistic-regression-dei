@@ -1,6 +1,6 @@
 
 C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\main.js
-  1318:10  error  Parsing error: Identifier 'init' has already been declared
+  1339:10  error  Parsing error: Identifier 'init' has already been declared
 
 C:\Users\3337r\OneDrive\Desktop\Vlab\exp-logistic-regression-dei\experiment\simulation\js\pdf-generator.js
     6:16  warning  'downloadPDF' is defined but never used  no-unused-vars
