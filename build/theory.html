@@ -6,7 +6,7 @@
         'discipline': 'Test',
         'college': 'DLBG',
         'phase': 'Testing',
-        'expName': 'LOGISTIC REGRESSION',
+        'expName': 'BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION',
         'expShortName': 'logistic-regression'
         }];
     
@@ -25,7 +25,7 @@
     
     	<meta name="experiment-short-name" content="logistic-regression">
     	<meta name="developer-institute" content="DLBG">
-    	<meta name="learning-unit" content="LOGISTIC REGRESSION">
+    	<meta name="learning-unit" content="BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION">
     	<meta name="task-name" content="Theory">
     
     <!-- For iPhone -->
@@ -94,7 +94,7 @@
             </div>      <div class="svc-rating-submit">
                 <rating-submit title="Rate" this="" experiment="">
                 </rating-submit>
-            </div>      <bug-report id="bug-report" title="[BUG REPORT] LOGISTIC REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;LOGISTIC REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" button_style="border: none; color: #fff; background-color: #288ec8; text-align: center; font-size: 1.05rem; border-radius: 1em;padding: 0.6em 1.2em; margin: 0 10px" position="override" custom_button_class="v-button"></bug-report>
+            </div>      <bug-report id="bug-report" title="[BUG REPORT] BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" button_style="border: none; color: #fff; background-color: #288ec8; text-align: center; font-size: 1.05rem; border-radius: 1em;padding: 0.6em 1.2em; margin: 0 10px" position="override" custom_button_class="v-button"></bug-report>
           </div>
         </nav>
       </header>
@@ -349,110 +349,475 @@
                         </div>
                     </div>
                 </div>
-          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
-            <div class="text-center fix-spacing">
-              <h2 id="logistic-regression">Logistic Regression</h2>
+          </div>            <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+              <div class="text-center fix-spacing">
+                <h2 id="binary-classification-and-decision-boundary-analysis-using-logistic-regression">Binary Classification and Decision Boundary Analysis using Logistic Regression</h2>
           
-            </div>
-              <p>Logistic regression is a supervised machine learning algorithm used for binary classification problems, where the dependent variable has two possible outcomes. It models the relationship between one or more independent variables and a dichotomous dependent variable by estimating the probability that a given input belongs to a particular class.</p>
-          <h3 id="1-linear-combination">1. Linear Combination</h3>
-          <p>In logistic regression, the input features are combined linearly using weights and a bias term. This linear combination is expressed as:</p>
+              </div>
+              <h3 id="1-classification-vs-regression">1. Classification vs. Regression</h3>
+          <p>In supervised machine learning, models are trained using datasets in which each input sample is associated with a known target output. Depending on the nature of this target variable, supervised learning problems are broadly categorized into regression and classification tasks.</p>
+          <p><strong>Regression</strong> involves predicting a continuous numerical value. For example, estimating the price of a house based on its area, location, and number of rooms is a regression problem. Algorithms such as linear regression are commonly used for this type of task.</p>
+          <p><strong>Classification</strong> involves predicting a discrete class label or category. For instance, determining whether a patient has dengue (Yes/No) based on clinical symptoms and test results is a classification problem. Algorithms such as logistic regression are specifically designed for classification tasks.</p>
+          <p>Understanding the distinction between regression and classification is important because the choice of algorithm depends on the type of output variable being predicted.</p>
+          <p>Despite containing the word "regression" in its name, logistic regression is a classification algorithm. The name comes from the fact that it models the log-odds (a continuous quantity) as a linear function of the inputs, and then transforms this value into a probability using the logistic (sigmoid) function.</p>
           <div align="center">
-          <strong>z = w · x + b</strong>
+          <img src="images/regvsclass.png" alt="Regression vs Classification" width="600">
+          <br>
+          <strong>Figure 1: Conceptual Difference Between Regression and Classification in Machine Learning</strong>
+          </div>
+          
+          <p>The Figure 1 compares regression and classification tasks in machine learning using a temperature example. Regression predicts an exact numerical value (72°F), while classification predicts a category such as cold or hot based on a temperature range.</p>
+          <h3 id="2-introduction-to-logistic-regression">2. Introduction to Logistic Regression</h3>
+          <p>Logistic Regression is a supervised machine learning algorithm used for classification problems, where the objective is to predict the probability that a given input belongs to a particular class. Unlike linear regression, which predicts continuous numerical values, logistic regression is designed to produce outputs that represent probabilities between 0 and 1. It achieves this by first computing a linear combination of the input features and then transforming this value using a nonlinear function so that the output can be interpreted as the likelihood of belonging to a specific class. Logistic regression is most commonly applied to binary classification tasks, such as determining whether an email is spam or not, whether a patient has a disease or not, or whether a transaction is fraudulent or legitimate. Due to its simplicity, interpretability, and ability to model class probabilities, logistic regression is widely used as a baseline classification method in many practical machine learning applications.</p>
+          <h3 id="3-linear-combination-in-logistic-regression">3. Linear Combination in Logistic Regression</h3>
+          <p>In logistic regression, the model first computes a linear combination of the input features, exactly as in linear regression:</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>z</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i><sub>1</sub> + <i>β</i><sub>2</sub><i>x</i><sub>2</sub> + ... + <i>β<sub>n</sub></i><i>x<sub>n</sub></i> = <b>w</b> · <b>x</b> + <i>b</i>
+              </span>
           </div>
           
           <p>where:</p>
           <ul>
-          <li><strong>w</strong> represents the weight vector.</li>
-          <li><strong>x</strong> represents the input features.</li>
-          <li><strong>b</strong> is the bias term.</li>
+          <li><strong>x₁, x₂, ..., xₙ</strong> are the input features (independent variables). In the dengue classification experiment, these include clinical attributes such as Age, Fever Days, Hematocrit, WBC count, and binary symptom indicators like Headache, Eye Pain, and Muscle Pain.</li>
+          <li><strong>β₁, β₂, ..., βₙ</strong> (equivalently <strong>w</strong>, the weight vector) are the model coefficients (parameters) that the algorithm learns during training. Each coefficient quantifies the contribution of its corresponding feature to the prediction.</li>
+          <li><strong>β₀</strong> (equivalently <strong>b</strong>, the bias or intercept term) allows the decision boundary to shift independently of the feature values. Without a bias, the model would be forced to pass through the origin in feature space.</li>
           </ul>
-          <h3 id="2-the-sigmoid-function">2. The Sigmoid Function</h3>
-          <p>The computed value <strong>z</strong> is then passed through a <strong>sigmoid function</strong>, which maps any real-valued number into a probability between 0 and 1. The sigmoid function is defined as:</p>
-          <div align="center">
-              <strong>p = σ(z) = </strong>
-              <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                  <div style="border-bottom: 1px solid black; padding: 0 5px;">1</div>
-                  <div style="padding: 0 5px;margin-bottom: 5px;">1 + e<sup>-z</sup></div>
-              </div>
+          <p>The quantity <strong>z</strong> is called the <strong>log-odds</strong> or <strong>logit</strong> of the positive class, because as we shall see, it equals the logarithm of the ratio of the probability of the positive class to the probability of the negative class.</p>
+          <h3 id="4-the-sigmoid-logistic-function">4. The Sigmoid (Logistic) Function</h3>
+          <p>The computed value <strong>z</strong> can be any real number, ranging from -∞ to +∞. To convert it into a probability, logistic regression applies the <strong>sigmoid function</strong> (also called the logistic function):</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>p</i> = <i>σ</i>(<i>z</i>) = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                      <div style="padding: 2px 8px;">1 + <i>e</i><sup>−<i>z</i></sup></div>
+                  </div>
+              </span>
           </div>
           
-          <p>The figure below shows the sigmoid curve of logistic regression illustrating the probability of dengue classification with respect to platelet count, along with the distribution of the two classes.</p>
           <div align="center">
-              <img src="images/logistic_regression_theory.png" alt="Sigmoid Curve for Logistic Regression">
-              <br>
+          <img src="images/sigmoid.png" alt="Sigmoid Function" width="500">
+          <br>
+          <strong>Figure 2: Sigmoid Function Curve Showing Probability Transformation</strong>
           </div>
           
+          <p>The Figure 2 shows the sigmoid (logistic) function, which converts a linear input value into a probability between 0 and 1 in logistic regression. The S-shaped curve has a midpoint at z = 0 (probability = 0.5), which acts as the decision boundary for binary classification.</p>
+          <p><strong>Key properties of the sigmoid function:</strong></p>
+          <ol>
+          <li><strong>Bounded output</strong>: σ(z) always lies strictly between 0 and 1, so the output is directly interpretable as a probability.</li>
+          <li><strong>Monotonically increasing</strong>: As z increases, σ(z) increases. This means that higher values of z correspond to higher probabilities of belonging to the positive class.</li>
+          <li><strong>Symmetric around z = 0</strong>: σ(0) = 0.5, which provides a natural decision boundary. When z &gt; 0, the probability exceeds 0.5 (predict positive); when z &lt; 0, the probability is below 0.5 (predict negative).</li>
+          <li><strong>Smooth and differentiable</strong>: The sigmoid has a continuous derivative at every point, which is essential for gradient-based optimisation. Its derivative has an elegant form:<div align="center" style="margin: 15px 0;">
+           <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+               <i>σ</i>'(<i>z</i>) = <i>σ</i>(<i>z</i>) · (1 − <i>σ</i>(<i>z</i>))
+           </span>
+          </div></li>
+          <li><strong>Asymptotic behaviour</strong>: As z → +∞, σ(z) → 1; as z → -∞, σ(z) → 0. The function never actually reaches 0 or 1.</li>
+          </ol>
+          <h3 id="5-the-logit-log-odds-interpretation">5. The Logit (Log-Odds) Interpretation</h3>
+          <p>The inverse of the sigmoid function is called the <strong>logit function</strong>. If we denote the probability of the positive class as <strong>p</strong>, then:</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  logit(<i>p</i>) = log
+                  <span style="font-size: 1.3em; vertical-align: middle;">(</span>
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 2px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;"><i>p</i></div>
+                      <div style="padding: 2px 8px;">1 − <i>p</i></div>
+                  </div>
+                  <span style="font-size: 1.3em; vertical-align: middle;">)</span>
+                  = <i>z</i> = <b>w</b> · <b>x</b> + <i>b</i>
+              </span>
+          </div>
           
-          <h3 id="3-output-and-prediction">3. Output and Prediction</h3>
-          <p>The output <strong>p</strong> represents the probability that the input instance belongs to the positive class. Since the sigmoid function is symmetric around 0.5, a threshold value is applied to convert the probability into a class label during prediction. Typically, a threshold of 0.5 is used:</p>
+          <p>The quantity <strong>p/(1 - p)</strong> is known as the <strong>odds</strong> — the ratio of the probability of the event occurring to the probability of it not occurring. The logit is the natural logarithm of the odds. For example, if p = 0.8, the odds are 0.8/0.2 = 4 (i.e., the event is 4 times more likely to occur than not), and the logit is log(4) ≈ 1.386.</p>
+          <p>In logistic regression, the logit is modelled as a linear function of the features. This means that each unit increase in a feature <strong>xⱼ</strong> changes the log-odds by <strong>βⱼ</strong>, or equivalently, multiplies the odds by <strong>e<sup>βⱼ</sup></strong>. This property makes logistic regression coefficients directly interpretable: a positive coefficient increases the odds of the positive class, while a negative coefficient decreases them.</p>
+          <h3 id="6-output-and-prediction">6. Output and Prediction</h3>
+          <p>The output <strong>p</strong> represents the probability that the input instance belongs to the positive class (e.g., dengue-positive). To convert this probability into a class label, a <strong>decision threshold</strong> is applied:</p>
           <p><strong>Prediction:</strong></p>
           <ul>
-          <li><strong>1</strong> if <strong>p ≥ 0.5</strong></li>
-          <li><strong>0</strong> if <strong>p &lt; 0.5</strong></li>
+          <li><strong>Class 1 (Positive)</strong> if <strong>p ≥ threshold</strong></li>
+          <li><strong>Class 0 (Negative)</strong> if <strong>p &lt; threshold</strong></li>
           </ul>
-          <p>Based on this thresholding process, the model assigns a class label to each input instance, thereby producing the final binary classification output.</p>
-          <h3 id="4-merits-of-logistic-regression">4. Merits of Logistic regression:</h3>
+          <p>The default threshold is <strong>0.5</strong> because it corresponds to the symmetry point of the sigmoid (σ(0) = 0.5) and treats both classes equally. However, in practice, the threshold can be adjusted based on the application:</p>
           <ul>
-          <li><p>Logistic regression provides easily interpretable model coefficients, helping to understand the relationship between input features and the predicted outcome.</p>
-          </li>
-          <li><p>It is computationally efficient, easy to implement, and performs well on large datasets with relatively low computational cost.</p>
-          </li>
-          <li><p>The model produces probability estimates between 0 and 1, allowing flexible decision-making through threshold adjustment.</p>
-          </li>
+          <li>In medical diagnosis (such as dengue detection), a <strong>lower threshold</strong> (e.g., 0.3) may be chosen to increase sensitivity (recall), ensuring that fewer positive cases are missed, even at the cost of more false alarms.</li>
+          <li>In spam detection, a <strong>higher threshold</strong> (e.g., 0.7) may be preferred to increase precision, ensuring that legitimate emails are not incorrectly classified as spam.</li>
           </ul>
-          <h3 id="5-demerits-of-logistic-regression">5. Demerits of Logistic regression:</h3>
-          <ul>
-          <li><p>Logistic regression assumes a linear relationship between the independent variables and the log-odds of the dependent variable, which may not hold for complex real-world data.</p>
-          </li>
-          <li><p>It is sensitive to outliers and irrelevant features, which can negatively affect model performance.</p>
-          </li>
-          <li><p>Logistic regression may underperform when the classes are not linearly separable or when the dataset has complex nonlinear patterns.</p>
-          </li>
-          </ul>
-          <h3 id="6-algorithm">6. Algorithm</h3>
-          <ol>
-          <li><strong>Step 1:</strong> Compute weighted sum of inputs:<ul>
-          <li><code>z = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ</code></li>
-          </ul>
-          </li>
-          <li><strong>Step 2:</strong> Pass z through the Sigmoid function to get probability:<ul>
-          <li><code>P(y=1|x) = 1 / (1 + e⁻ᶻ)</code></li>
-          <li>Result is always between 0 and 1</li>
-          </ul>
-          </li>
-          <li><strong>Step 3:</strong> Define the likelihood function:<ul>
-          <li>For each training example, probability of correct label:<ul>
-          <li>If actual label = 1: probability = P</li>
-          <li>If actual label = 0: probability = 1 - P</li>
-          </ul>
-          </li>
-          </ul>
-          </li>
-          <li><strong>Step 4:</strong> Calculate Log-Likelihood (to maximize):<ul>
-          <li><code>L = Σ[yᵢ × log(Pᵢ) + (1-yᵢ) × log(1-Pᵢ)]</code></li>
-          </ul>
-          </li>
-          <li><strong>Step 5:</strong> Find optimal weights using Gradient Ascent:<ul>
-          <li>Repeat until convergence:<ul>
-          <li>Calculate gradient: <code>∂L/∂βⱼ = Σ(yᵢ - Pᵢ) × xᵢⱼ</code></li>
-          <li>Update weights: <code>βⱼ = βⱼ + α × (∂L/∂βⱼ)</code></li>
-          <li>α is the learning rate</li>
-          </ul>
-          </li>
-          </ul>
-          </li>
-          <li><strong>Step 6:</strong> For prediction:<ul>
-          <li>Calculate P using learned weights</li>
-          <li>If P ≥ 0.5, predict class 1</li>
-          <li>If P &lt; 0.5, predict class 0</li>
-          </ul>
-          </li>
-          </ol>
-          
+          <h3 id="7-linear-vs-logistic-regression">7. Linear vs Logistic Regression</h3>
+          <table>
+          <thead>
+          <tr>
+          <th align="left">Aspect</th>
+          <th align="left">Linear Regression</th>
+          <th align="left">Logistic Regression</th>
+          </tr>
+          </thead>
+          <tbody><tr>
+          <td align="left"><strong>Purpose</strong></td>
+          <td align="left">Used to predict continuous numerical values</td>
+          <td align="left">Used to predict categorical outcomes (usually binary)</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Type of Problem</strong></td>
+          <td align="left">Regression</td>
+          <td align="left">Classification</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Output</strong></td>
+          <td align="left">Continuous numeric value</td>
+          <td align="left">Probability between 0 and 1, then converted to class label</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Example</strong></td>
+          <td align="left">Predict house price from area</td>
+          <td align="left">Predict whether a patient has dengue (Yes/No)</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Mathematical Model</strong></td>
+          <td align="left"><i>y</i> = <b>w</b> · <b>x</b> + <i>b</i></td>
+          <td align="left"><i>p</i> = <div style="display: inline-block; vertical-align: middle; text-align: center;"><div style="border-bottom: 1.5px solid black; padding: 2px 6px;">1</div><div style="padding: 2px 6px;">1 + <i>e</i><sup>−(<b>w</b> · <b>x</b> + <i>b</i>)</sup></div></div></td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Activation Function</strong></td>
+          <td align="left">No activation function</td>
+          <td align="left">Sigmoid (logistic) function</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Output Range</strong></td>
+          <td align="left">−∞ to +∞</td>
+          <td align="left">0 to 1</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Decision Boundary</strong></td>
+          <td align="left">Not required</td>
+          <td align="left">Uses threshold (usually 0.5)</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Loss Function</strong></td>
+          <td align="left">Mean Squared Error (MSE)</td>
+          <td align="left">Binary Cross-Entropy (Log Loss)</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Interpretation</strong></td>
+          <td align="left">Predicts exact numeric value</td>
+          <td align="left">Predicts probability of belonging to a class</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Evaluation Metrics</strong></td>
+          <td align="left">MSE, RMSE, R²</td>
+          <td align="left">Accuracy, Precision, Recall, F1-Score, ROC-AUC</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Graph Shape</strong></td>
+          <td align="left">Straight line</td>
+          <td align="left">S-shaped sigmoid curve</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Applications</strong></td>
+          <td align="left">House price prediction, stock prediction</td>
+          <td align="left">Disease detection, spam detection, fraud detection</td>
+          </tr>
+          </tbody></table>
+          <div align="center">
+          <img src="images/linearvslogistic.png" alt="Linear vs Logistic Regression" width="600">
+          <br>
+          <strong>Figure 3: Comparison of Linear Regression and Logistic Regression Decision Behavior</strong>
           </div>
+          
+          <p>The Figure 3 compares linear regression and logistic regression models for binary outcomes. Linear regression fits a straight line that can produce values beyond 0 and 1, while logistic regression uses a sigmoid curve to constrain predictions between 0 and 1 for classification.</p>
+          <h3 id="8-loss-function-binary-cross-entropy">8. Loss Function (Binary Cross-Entropy)</h3>
+          <p>Logistic regression uses the <strong>binary cross-entropy</strong> loss function (also called log loss), which is derived from the principle of maximum likelihood estimation:</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>L</i> = −
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                      <div style="padding: 2px 8px;"><i>N</i></div>
+                  </div>
+                  Σ [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
+              </span>
+          </div>
+          
+          <p>where:</p>
+          <ul>
+          <li><strong>N</strong> is the number of training samples</li>
+          <li><strong>yᵢ</strong> is the actual label (0 or 1) of the i-th sample</li>
+          <li><strong>pᵢ</strong> is the predicted probability for the i-th sample</li>
+          </ul>
+          <p><strong>Understanding the loss function intuitively:</strong></p>
+          <ul>
+          <li>When <strong>yᵢ = 1</strong> (actual positive), the loss for that sample is <strong>−log(pᵢ)</strong>. If the model predicts p close to 1, −log(1) ≈ 0 (low loss). If it predicts p close to 0, −log(0) → ∞ (very high loss, strong penalty).</li>
+          <li>When <strong>yᵢ = 0</strong> (actual negative), the loss is <strong>−log(1 − pᵢ)</strong>. If the model predicts p close to 0, the loss is low. If it predicts p close to 1, the loss is very high.</li>
+          </ul>
+          <p>This loss function is <strong>convex</strong>, guaranteeing that gradient descent will converge to the global minimum.</p>
+          <h3 id="9-gradient-descent">9. Gradient Descent</h3>
+          <p>The model parameters (weights and bias) are updated iteratively using <strong>gradient descent</strong>:</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>β<sub>j</sub></i> = <i>β<sub>j</sub></i> − <i>α</i> · 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
+                      <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+                  </div>
+              </span>
+          </div>
+          
+          <p>where <strong>α</strong> is the learning rate (a hyperparameter controlling the step size). The gradient of the log loss with respect to each weight is:</p>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
+                      <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+                  </div>
+                  = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                      <div style="padding: 2px 8px;"><i>N</i></div>
+                  </div>
+                  Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
+              </span>
+          </div>
+          
+          <p>This gradient has a clean and intuitive form: it is the average of the prediction error <strong>(pᵢ - yᵢ)</strong> weighted by the feature value <strong>xᵢⱼ</strong>. The weights are adjusted in the direction that reduces the prediction error.</p>
+          <h3 id="10-regularization">10. Regularization</h3>
+          <p>When the number of features is large or the features are correlated, the learned weights can become very large, causing the model to overfit the training data. Regularization combats this by adding a penalty term to the loss function that discourages large weight values.</p>
+          <p><strong>L1 Regularization (Lasso)</strong></p>
+          <div align="center" style="margin: 15px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · Σ |<i>β<sub>j</sub></i>|
+              </span>
+          </div>
+          L1 regularization adds the sum of absolute weights. It can drive some coefficients exactly to zero, effectively performing feature selection.
+          
+          <p><strong>L2 Regularization (Ridge)</strong></p>
+          <div align="center" style="margin: 15px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · Σ <i>β<sub>j</sub></i><sup>2</sup>
+              </span>
+          </div>
+          L2 regularization adds the sum of squared weights to the loss. It shrinks all coefficients toward zero but does not set any coefficient exactly to zero. In scikit-learn, the regularization strength is controlled by the parameter **C = 1/λ**: a smaller C means stronger regularization.
+          
+          <h3 id="11-training-algorithm">11. Training Algorithm</h3>
+          <p><strong>Step 1: Initialise Parameters</strong></p>
+          <ul>
+          <li>Set all weights β₁, β₂, ..., βₙ and bias β₀ to small random values or zeros.</li>
+          </ul>
+          <p><strong>Step 2: Compute the Linear Combination</strong></p>
+          <ul>
+          <li>For each training example, calculate:<div align="center" style="margin: 10px 0;">
+            <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                <i>z</i> = <i>β</i><sub>0</sub> + <i>β</i><sub>1</sub><i>x</i><sub>1</sub> + <i>β</i><sub>2</sub><i>x</i><sub>2</sub> + ... + <i>β<sub>n</sub></i><i>x<sub>n</sub></i>
+            </span>
+          </div></li>
+          </ul>
+          <p><strong>Step 3: Apply the Sigmoid Function</strong></p>
+          <ul>
+          <li>Compute the predicted probability:<div align="center" style="margin: 10px 0;">
+            <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                <i>p</i> = 
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                    <div style="padding: 2px 8px;">1 + <i>e</i><sup>−<i>z</i></sup></div>
+                </div>
+            </span>
+          </div></li>
+          <li>The result is always between 0 and 1.</li>
+          </ul>
+          <p><strong>Step 4: Compute the Loss</strong></p>
+          <ul>
+          <li>Calculate the binary cross-entropy loss over all training examples:<div align="center" style="margin: 15px 0;">
+            <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                <i>L</i> = −
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                    <div style="padding: 2px 8px;"><i>N</i></div>
+                </div>
+                Σ [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
+            </span>
+          </div></li>
+          </ul>
+          <p><strong>Step 5: Compute the Gradient</strong></p>
+          <ul>
+          <li><p>For each weight: </p>
+          <div style="margin: 10px 0; padding-left: 30px;">
+            <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
+                    <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+                </div>
+                = 
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                    <div style="padding: 2px 8px;"><i>N</i></div>
+                </div>
+                Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
+            </span>
+          </div></li>
+          <li><p>For the bias:</p>
+          <div style="margin: 10px 0; padding-left: 30px;">
+            <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
+                    <div style="padding: 2px 8px;">∂<i>β</i><sub>0</sub></div>
+                </div>
+                = 
+                <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                    <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
+                    <div style="padding: 2px 8px;"><i>N</i></div>
+                </div>
+                Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>)
+            </span>
+          </div></li>
+          </ul>
+          <p><strong>Step 6: Update Parameters</strong></p>
+          <div style="margin: 10px 0; padding-left: 30px;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+                  <i>β<sub>j</sub></i> = <i>β<sub>j</sub></i> − <i>α</i> · 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
+                      <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+                  </div>
+                  (for all <i>j</i>)
+              </span>
+          </div>
+          - α is the learning rate hyperparameter.
+          
+          <p><strong>Step 7: Repeat Until Convergence</strong></p>
+          <ul>
+          <li>Repeat Steps 2–6 until the change in loss between successive iterations falls below a tolerance threshold, or a maximum number of iterations is reached.</li>
+          </ul>
+          <p><strong>Step 8: Prediction</strong></p>
+          <ul>
+          <li>For a new input, calculate <strong>p</strong> using the learned weights.</li>
+          <li>Apply the decision threshold (default 0.5):<ul>
+          <li>If <strong>p ≥ 0.5</strong>, predict <strong>Class 1</strong></li>
+          <li>If <strong>p &lt; 0.5</strong>, predict <strong>Class 0</strong></li>
+          </ul>
+          </li>
+          </ul>
+          <h3 id="12-evaluation-metrics-for-binary-classification">12. Evaluation Metrics for Binary Classification</h3>
+          <p>After training the model, its performance must be evaluated on unseen test data. Several metrics are used, each capturing a different aspect of classification quality.</p>
+          <h4 id="121-confusion-matrix">12.1 Confusion Matrix</h4>
+          <p>The confusion matrix is a 2 × 2 table that summarises the four possible outcomes of binary classification:</p>
+          <table>
+          <thead>
+          <tr>
+          <th align="left"></th>
+          <th align="left">Predicted Positive</th>
+          <th align="left">Predicted Negative</th>
+          </tr>
+          </thead>
+          <tbody><tr>
+          <td align="left"><strong>Actual Positive</strong></td>
+          <td align="left">True Positive (TP)</td>
+          <td align="left">False Negative (FN)</td>
+          </tr>
+          <tr>
+          <td align="left"><strong>Actual Negative</strong></td>
+          <td align="left">False Positive (FP)</td>
+          <td align="left">True Negative (TN)</td>
+          </tr>
+          </tbody></table>
+          <ul>
+          <li><strong>True Positive (TP)</strong>: The model correctly predicts the positive class.</li>
+          <li><strong>True Negative (TN)</strong>: The model correctly predicts the negative class.</li>
+          <li><strong>False Positive (FP)</strong>: The model incorrectly predicts the positive class when the actual class is negative (Type I error).</li>
+          <li><strong>False Negative (FN)</strong>: The model incorrectly predicts the negative class when the actual class is positive (Type II error).</li>
+          </ul>
+          <h4 id="122-accuracy">12.2 Accuracy</h4>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  Accuracy = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP + TN</div>
+                      <div style="padding: 2px 8px;">TP + TN + FP + FN</div>
+                  </div>
+              </span>
+          </div>
+          Accuracy measures the overall proportion of correct predictions. It is useful when classes are balanced but can be misleading for imbalanced datasets.
+          
+          <h4 id="123-precision">12.3 Precision</h4>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  Precision = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP</div>
+                      <div style="padding: 2px 8px;">TP + FP</div>
+                  </div>
+              </span>
+          </div>
+          Precision measures the proportion of predicted positive instances that are actually positive. A high precision value indicates that the model produces fewer false positive predictions.
+          
+          <h4 id="124-recall-sensitivity">12.4 Recall (Sensitivity)</h4>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  Recall = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP</div>
+                      <div style="padding: 2px 8px;">TP + FN</div>
+                  </div>
+              </span>
+          </div>
+          Recall measures the proportion of actual positive instances that are correctly identified by the model. A high recall value indicates that the model successfully detects most of the positive cases and produces fewer false negatives.
+          
+          <h4 id="125-f1-score">12.5 F1-Score</h4>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  F1 = 2 × 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">Precision × Recall</div>
+                      <div style="padding: 2px 8px;">Precision + Recall</div>
+                  </div>
+                  = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">2TP</div>
+                      <div style="padding: 2px 8px;">2TP + FP + FN</div>
+                  </div>
+              </span>
+          </div>
+          The F1-Score is the harmonic mean of precision and recall. It provides a single metric that balances both concerns and is particularly useful when the class distribution is uneven.
+          
+          <h4 id="126-specificity">12.6 Specificity</h4>
+          <div align="center" style="margin: 20px 0;">
+              <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+                  Specificity = 
+                  <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
+                      <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TN</div>
+                      <div style="padding: 2px 8px;">TN + FP</div>
+                  </div>
+              </span>
+          </div>
+          Specificity measures the proportion of actual negatives that are correctly identified. It is the complement of the false positive rate.
+          
+          <h4 id="127-roc-curve-and-auc">12.7 ROC Curve and AUC</h4>
+          <p>The <strong>Receiver Operating Characteristic (ROC)</strong> curve plots the True Positive Rate (Recall) against the False Positive Rate (1 - Specificity) at various threshold settings. A model that perfectly separates the two classes produces a curve that passes through the top-left corner (TPR = 1, FPR = 0).</p>
+          <p>The <strong>Area Under the ROC Curve (AUC)</strong> summarises the overall discriminative ability of the model into a single number:</p>
+          <ul>
+          <li><strong>AUC = 1.0</strong>: Perfect classifier</li>
+          <li><strong>AUC = 0.5</strong>: No better than random guessing</li>
+          <li><strong>AUC &lt; 0.5</strong>: Worse than random (labels may be inverted)</li>
+          </ul>
+          <p>In this experiment, the model achieved an AUC of 0.998, indicating near-perfect separation between the two classes.</p>
+          <h3 id="13-merits-of-logistic-regression">13. Merits of Logistic Regression</h3>
+          <ul>
+          <li><strong>Interpretability</strong>: Each coefficient directly quantifies the effect of its feature on the log-odds of the positive class, making the model easy to explain to domain experts and stakeholders.</li>
+          <li><strong>Computational efficiency</strong>: Training requires only convex optimisation, which converges reliably even on large datasets. The algorithm has no expensive operations like matrix inversion of the full feature space.</li>
+          <li><strong>Probabilistic output</strong>: Unlike algorithms that output only class labels, logistic regression provides calibrated probability estimates, enabling flexible threshold tuning for different application requirements.</li>
+          <li><strong>Low risk of overfitting</strong>: With appropriate regularization, logistic regression generalises well even with moderate amounts of training data.</li>
+          <li><strong>Strong baseline</strong>: In practice, logistic regression frequently matches or exceeds the performance of more complex models on linearly separable or moderately nonlinear problems, making it an essential first model to try.</li>
+          </ul>
+          <h3 id="14-demerits-of-logistic-regression">14. Demerits of Logistic Regression</h3>
+          <ul>
+          <li><strong>Linear decision boundary</strong>: Logistic regression assumes that the log-odds of the outcome are a linear function of the features. It cannot capture complex nonlinear relationships unless feature engineering (e.g., polynomial features, interaction terms) is applied manually.</li>
+          <li><strong>Sensitivity to outliers</strong>: Extreme values in the feature space can disproportionately influence the learned coefficients and shift the decision boundary.</li>
+          <li><strong>Multicollinearity issues</strong>: When input features are highly correlated, the coefficient estimates become unstable and difficult to interpret, even though the overall predictions may remain reasonable.</li>
+          <li><strong>Not suitable for multi-modal class distributions</strong>: When the positive and negative classes form complex, non-convex regions in feature space, logistic regression will underperform compared to tree-based or kernel-based methods.</li>
+          </ul>
+          
+            </div>
           <div class="bug-report-mobile">
-              <bug-report id="bug-report" title="[BUG REPORT] LOGISTIC REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;LOGISTIC REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
+              <bug-report id="bug-report" title="[BUG REPORT] BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;DLBG&quot;,&quot;expname&quot;:&quot;BINARY CLASSIFICATION AND DECISION BOUNDARY ANALYSIS USING LOGISTIC REGRESSION&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
                           position: fixed; 
                           bottom: 20px;
                           right: 20px;

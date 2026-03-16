@@ -948,8 +948,8 @@ function renderSidebar() {
     downloadBtn.onclick = function() {
       // Download the static PDF file instead of generating one
       const link = document.createElement('a');
-      link.href = './Exp-Logistic_Regression.pdf';
-      link.download = 'Exp-Logistic_Regression.pdf';
+      link.href = './Experiment 3_final.pdf';
+      link.download = 'Experiment 3_final.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
