@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Virtual Lab: Linear to Logistic Regression</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <h1>From Prediction to Classification: Linear &amp; Logistic Regression</h1>
+      <div class="flow-steps">
+        <span class="flow-step step-linear"><span class="step-num">1</span> Linear Regression</span>
+        <span class="flow-chevron"></span>
+        <span class="flow-step step-bridge"><span class="step-num">2</span> Conceptual Bridge</span>
+        <span class="flow-chevron"></span>
+        <span class="flow-step step-logistic"><span class="step-num">3</span> Logistic Regression</span>
+      </div>
+    </header>
+
+    <!-- ═══ THREE-PANEL GRID ═══ -->
+    <div class="three-panels">
+
+      <!-- ===== 1. LINEAR REGRESSION ===== -->
+      <section class="lab-card" id="sectionA">
+        <h2>Linear Regression</h2>
+        <canvas id="linearCanvas" aria-label="Linear regression graph"></canvas>
+        <div class="hover-info" id="linearHoverInfo">
+          <span class="hover-info-label">Hover a data point:</span>
+          <span class="hover-info-content" id="linearHoverContent">Move your cursor over any point on the graph to see its details here.</span>
+        </div>
+        <div class="formula-block" id="linearFormula">
+          <div>z = w &middot; x + b</div>
+          <div><em>x is feature, w is weight, b is bias</em></div>
+        </div>
+
+        <!-- Controls below graph -->
+        <div class="controls-area">
+          <div class="control-group">
+            <h3>Regression Controls</h3>
+            <label for="linearFeatureSelect">X&nbsp;Feature</label>
+            <select id="linearFeatureSelect"></select>
+            <label for="linW">Weight (w): <span id="linWValue">1.00</span></label>
+            <input id="linW" type="range" min="-15" max="15" step="0.01" value="1">
+            <label for="linB">Bias (b): <span id="linBValue">0.00</span></label>
+            <input id="linB" type="range" min="-15" max="15" step="0.01" value="0">
+            <div class="button-row">
+              <button id="trainBtn" type="button" title="Fit the best line to the training data automatically">Fit Optimal Line (Train Data)</button>
+              <button id="resetLinearBtn" type="button" class="secondary" title="Reset weight and bias to defaults">Reset Line</button>
+            </div>
+            <p class="guide-text" id="linGuide">
+              <strong>How to use:</strong> Adjust Weight &amp; Bias sliders to move the line manually, or click <em>Fit Optimal Line</em> to auto-train. After training, the button greys out &mdash; click <em>Reset Line</em> to try again or pick a different feature.
+            </p>
+          </div>
+
+          <div class="control-group">
+            <h3>Regression Metrics</h3>
+            <table class="metrics-table">
+              <thead><tr><th>Metric</th><th>Train</th></tr></thead>
+              <tbody>
+                <tr><td>MSE</td><td id="linMSE">-</td></tr>
+                <tr><td>RMSE</td><td id="linRMSE">-</td></tr>
+                <tr><td>R&sup2; Score</td><td id="linR2">-</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="control-group">
+            <h3>Data Points</h3>
+            <div class="data-points-info" id="linearDataInfo"></div>
+          </div>
+        </div>
+
+        <div class="controls-area">
+          <div class="control-group full-width">
+            <label for="linearSampleSelect">Inspect Sample <small>(available after training)</small></label>
+            <select id="linearSampleSelect" disabled><option value="">Train first</option></select>
+            <div class="mini-table" id="linearSampleInfo"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 2. CONCEPTUAL BRIDGE ===== -->
+      <section class="lab-card" id="sectionB">
+        <h2>Conceptual Bridge</h2>
+        <canvas id="bridgeCanvas" aria-label="Bridge transformation graph"></canvas>
+        <p class="annotation" id="bridgeFormula">z = wx + b &rarr; &sigma;(z) = 1 / (1 + e<sup>&minus;z</sup>)</p>
+
+        <div class="controls-area">
+          <div class="control-group full-width">
+            <h3>Bridge Animation</h3>
+            <p class="section-note" id="bridgeText">
+              Linear output <strong>z = wx + b</strong> is transformed through the sigmoid to produce a probability.
+            </p>
+            <div class="button-row">
+              <button id="autoBridgeBtn" type="button" title="Watch the curve slowly morph from a line into a sigmoid">Auto Animate</button>
+              <button id="resetBridgeBtn" type="button" class="secondary" title="Reset the bridge animation back to start">Reset</button>
+            </div>
+            <div class="mini-table" id="bridgeDetails">
+              <p>The linear output is unbounded. The sigmoid squeezes it into [0,&nbsp;1] to get a probability. Click <em>Auto Animate</em> to watch the transformation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-area">
+          <div class="control-group full-width">
+            <h3>Linear vs Logistic Regression</h3>
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Feature</th><th>Linear Regression</th><th>Logistic Regression</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Output</td><td>Continuous value (unbounded)</td><td>Probability between 0 and 1</td></tr>
+                <tr><td>Function</td><td>z = w&middot;x + b</td><td>&sigma;(z) = 1 / (1 + e<sup>&minus;z</sup>)</td></tr>
+                <tr><td>Use Case</td><td>Predicting quantities (e.g. price)</td><td>Classification (e.g. disease detection)</td></tr>
+                <tr><td>Decision Boundary</td><td>Not applicable</td><td>Threshold at p = 0.5</td></tr>
+                <tr><td>Loss Function</td><td>Mean Squared Error (MSE)</td><td>Log Loss (Cross-Entropy)</td></tr>
+                <tr><td>Curve Shape</td><td>Straight line</td><td>S-shaped sigmoid curve</td></tr>
+                <tr><td>Y-axis Range</td><td>&minus;&infin; to +&infin;</td><td>0 to 1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 3. LOGISTIC REGRESSION ===== -->
+      <section class="lab-card" id="sectionC">
+        <h2>Logistic Regression</h2>
+        <canvas id="logisticCanvas" aria-label="Logistic regression graph"></canvas>
+        <div class="hover-info" id="logisticHoverInfo">
+          <span class="hover-info-label">Hover a data point:</span>
+          <span class="hover-info-content" id="logisticHoverContent">Move your cursor over any point on the graph to see its details here.</span>
+        </div>
+        <div class="formula-block" id="logisticFormula">
+          <div>z = w &middot; x + b</div>
+          <div>p = 1 / (1 + e<sup>&minus;z</sup>)</div>
+          <div><em>x is feature, w is weight, b is bias</em></div>
+        </div>
+
+        <div class="controls-area">
+          <div class="control-group">
+            <h3>Logistic Controls</h3>
+            <label for="logisticFeatureSelect">Feature</label>
+            <select id="logisticFeatureSelect"></select>
+            <label for="logW">Weight (w): <span id="logWValue">1.00</span></label>
+            <input id="logW" type="range" min="-12" max="12" step="0.01" value="1">
+            <label for="logB">Bias (b): <span id="logBValue">0.00</span></label>
+            <input id="logB" type="range" min="-8" max="8" step="0.01" value="0">
+            <div class="button-row">
+              <button id="trainLogisticBtn" type="button" title="Fit the sigmoid curve to the training data automatically">Fit Optimal Curve (Train Data)</button>
+              <button id="resetLogisticBtn" type="button" class="secondary" title="Reset weight and bias to defaults">Reset Curve</button>
+            </div>
+            <p class="guide-text" id="logGuide">
+              <strong>How to use:</strong> Adjust Weight &amp; Bias sliders to shape the sigmoid manually, or click <em>Fit Optimal Curve</em> to auto-train. After training, the button greys out &mdash; click <em>Reset Curve</em> to try again or pick a different feature.
+            </p>
+          </div>
+
+          <div class="control-group">
+            <h3>Classification Metrics</h3>
+            <table class="metrics-table">
+              <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+              <tbody>
+                <tr><td>Accuracy</td><td id="logAccuracy">-</td></tr>
+                <tr><td>Decision Boundary</td><td id="decisionBoundary">-</td></tr>
+                <tr><td>Log Loss</td><td id="logLoss">-</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="control-group">
+            <h3>Data Points</h3>
+            <div class="data-points-info" id="logisticDataInfo"></div>
+          </div>
+        </div>
+
+        <div class="controls-area">
+          <div class="control-group full-width">
+            <label for="logisticSampleSelect">Inspect Sample <small>(available after training)</small></label>
+            <select id="logisticSampleSelect" disabled><option value="">Train first</option></select>
+            <div class="mini-table" id="logisticSampleInfo"></div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /three-panels -->
+  </main>
+
+  <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
