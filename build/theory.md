@@ -30,21 +30,21 @@ In logistic regression, the model first computes a linear combination of the inp
 </div>
 
 where:
-- **x₁, x₂, ..., xₙ** are the input features (independent variables). In the dengue classification experiment, these include clinical attributes such as Age, Fever Days, Hematocrit, WBC count, and binary symptom indicators like Headache, Eye Pain, and Muscle Pain.
-- **β₁, β₂, ..., βₙ** (equivalently **w**, the weight vector) are the model coefficients (parameters) that the algorithm learns during training. Each coefficient quantifies the contribution of its corresponding feature to the prediction.
-- **β₀** (equivalently **b**, the bias or intercept term) allows the decision boundary to shift independently of the feature values. Without a bias, the model would be forced to pass through the origin in feature space.
+- x₁, x₂, ..., xₙ are the input features (independent variables). In the dengue classification experiment, these include clinical attributes such as Age, Fever Days, Hematocrit, WBC count, and binary symptom indicators like Headache, Eye Pain, and Muscle Pain.
+- β₁, β₂, ..., βₙ (equivalently w, the weight vector) are the model coefficients (parameters) that the algorithm learns during training. Each coefficient quantifies the contribution of its corresponding feature to the prediction.
+- β₀ (equivalently b, the bias or intercept term) allows the decision boundary to shift independently of the feature values. Without a bias, the model would be forced to pass through the origin in feature space.
 
-The quantity **z** is called the **log-odds** or **logit** of the positive class, because as we shall see, it equals the logarithm of the ratio of the probability of the positive class to the probability of the negative class.
+The quantity z is called the log-odds or logit of the positive class, because as we shall see, it equals the logarithm of the ratio of the probability of the positive class to the probability of the negative class.
 
 ### 4. The Sigmoid (Logistic) Function
-The computed value **z** can be any real number, ranging from -∞ to +∞. To convert it into a probability, logistic regression applies the **sigmoid function** (also called the logistic function):
+The computed value z can be any real number, ranging from -∞ to +∞. To convert it into a probability, logistic regression applies the sigmoid function (also called the logistic function):
 
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         <i>p</i> = <i>σ</i>(<i>z</i>) = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;">1 + <i>e</i><sup>−<i>z</i></sup></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;">1</div>
+            <div>1 + <i>e</i><sup>−<i>z</i></sup></div>
         </div>
     </span>
 </div>
@@ -70,35 +70,35 @@ The Figure 2 shows the sigmoid (logistic) function, which converts a linear inpu
 5. **Asymptotic behaviour**: As z → +∞, σ(z) → 1; as z → -∞, σ(z) → 0. The function never actually reaches 0 or 1.
 
 ### 5. The Logit (Log-Odds) Interpretation
-The inverse of the sigmoid function is called the **logit function**. If we denote the probability of the positive class as **p**, then:
+The inverse of the sigmoid function is called the logit function. If we denote the probability of the positive class as p, then:
 
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         logit(<i>p</i>) = log
         <span style="font-size: 1.3em; vertical-align: middle;">(</span>
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 2px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;"><i>p</i></div>
-            <div style="padding: 2px 8px;">1 − <i>p</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;"><i>p</i></div>
+            <div>1 − <i>p</i></div>
         </div>
         <span style="font-size: 1.3em; vertical-align: middle;">)</span>
         = <i>z</i> = <b>w</b> · <b>x</b> + <i>b</i>
     </span>
 </div>
 
-The quantity **p/(1 - p)** is known as the **odds** — the ratio of the probability of the event occurring to the probability of it not occurring. The logit is the natural logarithm of the odds. For example, if p = 0.8, the odds are 0.8/0.2 = 4 (i.e., the event is 4 times more likely to occur than not), and the logit is log(4) ≈ 1.386.
+The quantity p/(1 - p) is known as the odds — the ratio of the probability of the event occurring to the probability of it not occurring. The logit is the natural logarithm of the odds. For example, if p = 0.8, the odds are 0.8/0.2 = 4 (i.e., the event is 4 times more likely to occur than not), and the logit is log(4) ≈ 1.386.
 
-In logistic regression, the logit is modelled as a linear function of the features. This means that each unit increase in a feature **xⱼ** changes the log-odds by **βⱼ**, or equivalently, multiplies the odds by **e<sup>βⱼ</sup>**. This property makes logistic regression coefficients directly interpretable: a positive coefficient increases the odds of the positive class, while a negative coefficient decreases them.
+In logistic regression, the logit is modelled as a linear function of the features. This means that each unit increase in a feature xⱼ changes the log-odds by βⱼ, or equivalently, multiplies the odds by e<sup>βⱼ</sup>. This property makes logistic regression coefficients directly interpretable: a positive coefficient increases the odds of the positive class, while a negative coefficient decreases them.
 
 ### 6. Output and Prediction
-The output **p** represents the probability that the input instance belongs to the positive class (e.g., dengue-positive). To convert this probability into a class label, a **decision threshold** is applied:
+The output p represents the probability that the input instance belongs to the positive class (e.g., dengue-positive). To convert this probability into a class label, a decision threshold is applied:
 
 **Prediction:**
-- **Class 1 (Positive)** if **p ≥ threshold**
-- **Class 0 (Negative)** if **p < threshold**
+- **Class 1 (Positive)** if p ≥ threshold
+- **Class 0 (Negative)** if p < threshold
 
-The default threshold is **0.5** because it corresponds to the symmetry point of the sigmoid (σ(0) = 0.5) and treats both classes equally. However, in practice, the threshold can be adjusted based on the application:
-- In medical diagnosis (such as dengue detection), a **lower threshold** (e.g., 0.3) may be chosen to increase sensitivity (recall), ensuring that fewer positive cases are missed, even at the cost of more false alarms.
-- In spam detection, a **higher threshold** (e.g., 0.7) may be preferred to increase precision, ensuring that legitimate emails are not incorrectly classified as spam.
+The default threshold is 0.5 because it corresponds to the symmetry point of the sigmoid (σ(0) = 0.5) and treats both classes equally. However, in practice, the threshold can be adjusted based on the application:
+- In medical diagnosis (such as dengue detection), a lower threshold (e.g., 0.3) may be chosen to increase sensitivity (recall), ensuring that fewer positive cases are missed, even at the cost of more false alarms.
+- In spam detection, a higher threshold (e.g., 0.7) may be preferred to increase precision, ensuring that legitimate emails are not incorrectly classified as spam.
 
 ### 7. Linear vs Logistic Regression
 
@@ -108,7 +108,7 @@ The default threshold is **0.5** because it corresponds to the symmetry point of
 | **Type of Problem** | Regression | Classification |
 | **Output** | Continuous numeric value | Probability between 0 and 1, then converted to class label |
 | **Example** | Predict house price from area | Predict whether a patient has dengue (Yes/No) |
-| **Mathematical Model** | <i>y</i> = <b>w</b> · <b>x</b> + <i>b</i> | <i>p</i> = <div style="display: inline-block; vertical-align: middle; text-align: center;"><div style="border-bottom: 1.5px solid black; padding: 2px 6px;">1</div><div style="padding: 2px 6px;">1 + <i>e</i><sup>−(<b>w</b> · <b>x</b> + <i>b</i>)</sup></div></div> |
+| **Mathematical Model** | <i>y</i> = <b>w</b> · <b>x</b> + <i>b</i> | <i>p</i> = <div style="display: inline-block; vertical-align: middle; text-align: center;"><div style="border-bottom: 1.5px solid black; padding: 0 5px;">1</div><div>1 + <i>e</i><sup>−(<b>w</b> · <b>x</b> + <i>b</i>)</sup></div></div> |
 | **Activation Function** | No activation function | Sigmoid (logistic) function |
 | **Output Range** | −∞ to +∞ | 0 to 1 |
 | **Decision Boundary** | Not required | Uses threshold (usually 0.5) |
@@ -127,16 +127,21 @@ The default threshold is **0.5** because it corresponds to the symmetry point of
 The Figure 3 compares linear regression and logistic regression models for binary outcomes. Linear regression fits a straight line that can produce values beyond 0 and 1, while logistic regression uses a sigmoid curve to constrain predictions between 0 and 1 for classification.
 
 ### 8. Loss Function (Binary Cross-Entropy)
-Logistic regression uses the **binary cross-entropy** loss function (also called log loss), which is derived from the principle of maximum likelihood estimation:
+Logistic regression uses the binary cross-entropy loss function (also called log loss), which is derived from the principle of maximum likelihood estimation:
 
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         <i>L</i> = −
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;"><i>N</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;">1</div>
+            <div><i>N</i></div>
         </div>
-        Σ [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>N</i></div>
+            <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>i</i>=1</div>
+        </div>
+        [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
     </span>
 </div>
 
@@ -146,20 +151,20 @@ where:
 - **pᵢ** is the predicted probability for the i-th sample
 
 **Understanding the loss function intuitively:**
-- When **yᵢ = 1** (actual positive), the loss for that sample is **−log(pᵢ)**. If the model predicts p close to 1, −log(1) ≈ 0 (low loss). If it predicts p close to 0, −log(0) → ∞ (very high loss, strong penalty).
-- When **yᵢ = 0** (actual negative), the loss is **−log(1 − pᵢ)**. If the model predicts p close to 0, the loss is low. If it predicts p close to 1, the loss is very high.
+- When yᵢ = 1 (actual positive), the loss for that sample is −log(pᵢ). If the model predicts p close to 1, −log(1) ≈ 0 (low loss). If it predicts p close to 0, −log(0) → ∞ (very high loss, strong penalty).
+- When yᵢ = 0 (actual negative), the loss is −log(1 − pᵢ). If the model predicts p close to 0, the loss is low. If it predicts p close to 1, the loss is very high.
 
-This loss function is **convex**, guaranteeing that gradient descent will converge to the global minimum.
+This loss function is convex, guaranteeing that gradient descent will converge to the global minimum.
 
 ### 9. Gradient Descent
-The model parameters (weights and bias) are updated iteratively using **gradient descent**:
+The model parameters (weights and bias) are updated iteratively using gradient descent:
 
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         <i>β<sub>j</sub></i> = <i>β<sub>j</sub></i> − <i>α</i> · 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
-            <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;">∂<i>L</i></div>
+            <div>∂<i>β<sub>j</sub></i></div>
         </div>
     </span>
 </div>
@@ -167,40 +172,67 @@ The model parameters (weights and bias) are updated iteratively using **gradient
 where **α** is the learning rate (a hyperparameter controlling the step size). The gradient of the log loss with respect to each weight is:
 
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
-            <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;">∂<i>L</i></div>
+            <div>∂<i>β<sub>j</sub></i></div>
         </div>
         = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;"><i>N</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.5px solid black; padding: 0 5px;">1</div>
+            <div><i>N</i></div>
         </div>
-        Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>N</i></div>
+            <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>i</i>=1</div>
+        </div>
+        (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
     </span>
 </div>
 
-This gradient has a clean and intuitive form: it is the average of the prediction error **(pᵢ - yᵢ)** weighted by the feature value **xᵢⱼ**. The weights are adjusted in the direction that reduces the prediction error.
+This gradient has a clean and intuitive form: it is the average of the prediction error (pᵢ - yᵢ) weighted by the feature value xᵢⱼ. The weights are adjusted in the direction that reduces the prediction error.
 
 ### 10. Regularization
 When the number of features is large or the features are correlated, the learned weights can become very large, causing the model to overfit the training data. Regularization combats this by adding a penalty term to the loss function that discourages large weight values.
 
 **L1 Regularization (Lasso)**
 <div align="center" style="margin: 15px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
-        <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · Σ |<i>β<sub>j</sub></i>|
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
+        <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · 
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>n</i></div>
+            <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>j</i>=1</div>
+        </div>
+        |<i>β<sub>j</sub></i>|
     </span>
 </div>
 L1 regularization adds the sum of absolute weights. It can drive some coefficients exactly to zero, effectively performing feature selection.
 
 **L2 Regularization (Ridge)**
 <div align="center" style="margin: 15px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
-        <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · Σ <i>β<sub>j</sub></i><sup>2</sup>
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
+        <i>L</i><sub>regularized</sub> = <i>L</i> + <i>λ</i> · 
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>n</i></div>
+            <div style="font-size: 1.7em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>j</i>=1</div>
+        </div>
+        <i>β<sub>j</sub></i><sup>2</sup>
     </span>
 </div>
-L2 regularization adds the sum of squared weights to the loss. It shrinks all coefficients toward zero but does not set any coefficient exactly to zero. In scikit-learn, the regularization strength is controlled by the parameter **C = 1/λ**: a smaller C means stronger regularization.
+L2 regularization adds the sum of squared weights to the loss. It shrinks all coefficients toward zero but does not set any coefficient exactly to zero. In scikit-learn, the regularization strength is controlled by the parameter:
+<div align="center" style="margin: 15px 0;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
+        <i>C</i> = 
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">1</div>
+            <div style="padding-top: 2px;"><i>λ</i></div>
+        </div>
+    </span>
+</div>
+a smaller <i>C</i> means stronger regularization.
 
 ### 11. Training Algorithm
 **Step 1: Initialise Parameters**
@@ -217,11 +249,11 @@ L2 regularization adds the sum of squared weights to the loss. It shrinks all co
 **Step 3: Apply the Sigmoid Function**
 - Compute the predicted probability:
 <div align="center" style="margin: 10px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.15em;">
         <i>p</i> = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;">1 + <i>e</i><sup>−<i>z</i></sup></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">1</div>
+            <div style="padding-top: 2px;">1 + <i>e</i><sup>−<i>z</i></sup></div>
         </div>
     </span>
 </div>
@@ -230,56 +262,71 @@ L2 regularization adds the sum of squared weights to the loss. It shrinks all co
 **Step 4: Compute the Loss**
 - Calculate the binary cross-entropy loss over all training examples:
 <div align="center" style="margin: 15px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.15em;">
         <i>L</i> = −
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;"><i>N</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">1</div>
+            <div><i>N</i></div>
         </div>
-        Σ [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>N</i></div>
+            <div style="font-size: 1.75em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>i</i>=1</div>
+        </div>
+        [<i>y<sub>i</sub></i> · log(<i>p<sub>i</sub></i>) + (1 − <i>y<sub>i</sub></i>) · log(1 − <i>p<sub>i</sub></i>)]
     </span>
 </div>
 
 **Step 5: Compute the Gradient**
 - For each weight: 
 <div style="margin: 10px 0; padding-left: 30px;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
-            <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.15em;">
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">∂<i>L</i></div>
+            <div>∂<i>β<sub>j</sub></i></div>
         </div>
         = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;"><i>N</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">1</div>
+            <div><i>N</i></div>
         </div>
-        Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>N</i></div>
+            <div style="font-size: 1.75em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>i</i>=1</div>
+        </div>
+        (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>) · <i>x<sub>ij</sub></i>
     </span>
 </div>
 
 - For the bias:
 <div style="margin: 10px 0; padding-left: 30px;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
-            <div style="padding: 2px 8px;">∂<i>β</i><sub>0</sub></div>
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.15em;">
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">∂<i>L</i></div>
+            <div>∂<i>β</i><sub>0</sub></div>
         </div>
         = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">1</div>
-            <div style="padding: 2px 8px;"><i>N</i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">1</div>
+            <div><i>N</i></div>
         </div>
-        Σ (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>)
+        <div style="display: inline-block; vertical-align: middle; text-align: center; line-height: 1.1; margin: 0 5px;">
+            <div style="font-size: 0.75em;"><i>N</i></div>
+            <div style="font-size: 1.75em; margin: 3px 0;">&sum;</div>
+            <div style="font-size: 0.75em;"><i>i</i>=1</div>
+        </div>
+        (<i>p<sub>i</sub></i> − <i>y<sub>i</sub></i>)
     </span>
 </div>
 
 **Step 6: Update Parameters**
 <div style="margin: 10px 0; padding-left: 30px;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.1em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.15em;">
         <i>β<sub>j</sub></i> = <i>β<sub>j</sub></i> − <i>α</i> · 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">∂<i>L</i></div>
-            <div style="padding: 2px 8px;">∂<i>β<sub>j</sub></i></div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">∂<i>L</i></div>
+            <div>∂<i>β<sub>j</sub></i></div>
         </div>
         (for all <i>j</i>)
     </span>
@@ -290,10 +337,10 @@ L2 regularization adds the sum of squared weights to the loss. It shrinks all co
 - Repeat Steps 2–6 until the change in loss between successive iterations falls below a tolerance threshold, or a maximum number of iterations is reached.
 
 **Step 8: Prediction**
-- For a new input, calculate **p** using the learned weights.
+- For a new input, calculate p using the learned weights.
 - Apply the decision threshold (default 0.5):
-  - If **p ≥ 0.5**, predict **Class 1**
-  - If **p < 0.5**, predict **Class 0**
+  - If p ≥ 0.5, predict Class 1
+  - If p < 0.5, predict Class 0
 
 ### 12. Evaluation Metrics for Binary Classification
 After training the model, its performance must be evaluated on unseen test data. Several metrics are used, each capturing a different aspect of classification quality.
@@ -313,11 +360,11 @@ The confusion matrix is a 2 × 2 table that summarises the four possible outcome
 
 #### 12.2 Accuracy
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         Accuracy = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP + TN</div>
-            <div style="padding: 2px 8px;">TP + TN + FP + FN</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">TP + TN</div>
+            <div style="padding-top: 2px;">TP + TN + FP + FN</div>
         </div>
     </span>
 </div>
@@ -325,11 +372,11 @@ Accuracy measures the overall proportion of correct predictions. It is useful wh
 
 #### 12.3 Precision
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         Precision = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP</div>
-            <div style="padding: 2px 8px;">TP + FP</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">TP</div>
+            <div style="padding-top: 2px;">TP + FP</div>
         </div>
     </span>
 </div>
@@ -337,11 +384,11 @@ Precision measures the proportion of predicted positive instances that are actua
 
 #### 12.4 Recall (Sensitivity)
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         Recall = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TP</div>
-            <div style="padding: 2px 8px;">TP + FN</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">TP</div>
+            <div style="padding-top: 2px;">TP + FN</div>
         </div>
     </span>
 </div>
@@ -349,16 +396,16 @@ Recall measures the proportion of actual positive instances that are correctly i
 
 #### 12.5 F1-Score
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         F1 = 2 × 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">Precision × Recall</div>
-            <div style="padding: 2px 8px;">Precision + Recall</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">Precision × Recall</div>
+            <div style="padding-top: 2px;">Precision + Recall</div>
         </div>
         = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">2TP</div>
-            <div style="padding: 2px 8px;">2TP + FP + FN</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">2TP</div>
+            <div style="padding-top: 2px;">2TP + FP + FN</div>
         </div>
     </span>
 </div>
@@ -366,23 +413,23 @@ The F1-Score is the harmonic mean of precision and recall. It provides a single 
 
 #### 12.6 Specificity
 <div align="center" style="margin: 20px 0;">
-    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.2em;">
+    <span style="font-family: 'Times New Roman', 'Georgia', serif; font-size: 1.25em;">
         Specificity = 
-        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 3px;">
-            <div style="border-bottom: 1.5px solid black; padding: 2px 8px;">TN</div>
-            <div style="padding: 2px 8px;">TN + FP</div>
+        <div style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 5px;">
+            <div style="border-bottom: 1.2px solid black; padding: 0 5px;">TN</div>
+            <div style="padding-top: 2px;">TN + FP</div>
         </div>
     </span>
 </div>
 Specificity measures the proportion of actual negatives that are correctly identified. It is the complement of the false positive rate.
 
 #### 12.7 ROC Curve and AUC
-The **Receiver Operating Characteristic (ROC)** curve plots the True Positive Rate (Recall) against the False Positive Rate (1 - Specificity) at various threshold settings. A model that perfectly separates the two classes produces a curve that passes through the top-left corner (TPR = 1, FPR = 0).
+The Receiver Operating Characteristic (ROC) curve plots the True Positive Rate (Recall) against the False Positive Rate (1 - Specificity) at various threshold settings. A model that perfectly separates the two classes produces a curve that passes through the top-left corner (TPR = 1, FPR = 0).
 
-The **Area Under the ROC Curve (AUC)** summarises the overall discriminative ability of the model into a single number:
-- **AUC = 1.0**: Perfect classifier
-- **AUC = 0.5**: No better than random guessing
-- **AUC < 0.5**: Worse than random (labels may be inverted)
+The Area Under the ROC Curve (AUC) summarises the overall discriminative ability of the model into a single number:
+- AUC = 1.0: Perfect classifier
+- AUC = 0.5: No better than random guessing
+- AUC < 0.5: Worse than random (labels may be inverted)
 
 In this experiment, the model achieved an AUC of 0.998, indicating near-perfect separation between the two classes.
 
