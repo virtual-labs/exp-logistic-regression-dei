@@ -1,0 +1,20 @@
+### This folder contains all the image files used in the simulation.
+AbdominalPain.png
+Age.png
+Bleeding.png
+CM(TD).png
+CM.png
+EyePain.png
+FeverDays.png
+Headache.png
+Hematocrit.png
+JointPain.png
+Lethargy.png
+MusclePain.png
+Nausea.png
+Platelets.png
+Rash.png
+Vomiting.png
+WBC.png
+model_output.png
+roc.png
